@@ -55,7 +55,7 @@ def print_name():
     )
     label.grid(row=2,column=1)
 
-my_bubtton = Button(
+my_button = Button(
     window,
     text = "print name",
     command = print_name,
@@ -65,7 +65,8 @@ my_bubtton = Button(
         ""
     )
 )
-my_bubtton.grid(row = 1,column = 1)
+
+my_button.grid(row = 1,column = 1)
 
 # mainloop is the run command to show the window
 window.mainloop()
