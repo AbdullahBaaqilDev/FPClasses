@@ -15,3 +15,36 @@ class User:
 
 new_user = User(user_number = 1)
 new_user.print_infos()
+
+
+
+
+
+
+
+class Zombie:
+    def __init__(self,speed,health,damage):
+        self.speed = speed
+        self.health = health
+        self.damage = damage
+    
+    def take_damage(self,damage):
+        self.health -= damage
+    
+    def give_damage(self):
+        print(f"Zombie hit you with {self.damage} damage")
+
+    def die(self):
+        print("Zombie has died")
+
+class ElectronicZombie(Zombie):
+    def __init__(self,speed,health,damage,electro_power):
+        super().__init__(speed,health,damage)
+        
+        self.electro_power = electro_power
+
+    def give_damage(self):
+        print(f"Electronic Zombie hit you with {self.damage}")
+    
+    def teleport(self):
+        print(f"Electronic Zombie has teleported to you")
