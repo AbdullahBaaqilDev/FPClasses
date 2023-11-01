@@ -1,4 +1,4 @@
-
+# how to create a class
 class User:
     def __init__(self,user_number):
         self.name = "Abdullah"
@@ -21,7 +21,7 @@ new_user.print_infos()
 
 
 
-
+# classes inheritance
 class Zombie:
     def __init__(self,speed,health,damage):
         self.speed = speed
@@ -48,3 +48,8 @@ class ElectronicZombie(Zombie):
     
     def teleport(self):
         print(f"Electronic Zombie has teleported to you")
+
+new_zombie = ElectronicZombie(125, 550, 45, 172)
+new_zombie.take_damage(50)
+new_zombie.teleport()
+new_zombie.give_damage()

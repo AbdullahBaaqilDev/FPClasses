@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 user_infos = {
     "name": "Abdullah",
     "age": 15,
@@ -25,7 +24,7 @@ print(user_infos.values())# retrun an array with all of dict values
 print(user_infos.items())# retrun an array with all of dict items [(key,value),(key,value),(key,value)]
 
 print(user_infos)
-=======
+
 names_ages = {
     "abdullah": 15,
     "hamzah baaqeil": 14.6,
@@ -46,4 +45,3 @@ new_dict = {
 
 names_ages.update()
 print(names_ages)
->>>>>>> 0116704744d84cfca842f85818d260c5311964b9
