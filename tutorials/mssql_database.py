@@ -2,18 +2,23 @@ import pypyodbc
 
 DRIVER_NAME = "SQL Server"
 SERVER_NAME = "ABDULLAH-LAPTOP\\SQLExpress"
-
+DATABASE_NAME = "test1"
 
 try:
     connection_string = f"""
         DRIVER={{{DRIVER_NAME}}};
         SERVER={SERVER_NAME};
+        DATABASE={DATABASE_NAME};
         Trusted_Connection=yes;
     """
 
     connection = pypyodbc.connect(connection_string, autocommit=True)
     db = connection.cursor()
-    db.execute("CREATE DATABASE test2")
+
+    query = "SELECT * FROM cars WHERE color = ?"
+    values = ("red",)
+    db.execute(query, values)
+    print(db.fetchall())
 except Exception as error:
     print("Couldn't connect to database")
     print(error)
@@ -21,9 +26,15 @@ finally:
     db.close()
     connection.close()
 
+# -------------Create a Database
+# db.execute("CREATE DATABASE test2")
+
 # -------------Create a Table
     # query = "CREATE TABLE cars (name VARCHAR(50) PRIMARY KEY, color VARCHAR(15), price DECIMAL(10, 2))"
     # db.execute(query)
+
+# -------------Delete a Table
+    # db.execute("DROP TABLE cars")
 
 # ---------------add a rowٍ
 # query = "INSERT INTO cars (name, price, color) VALUES (?, ?, ?)"
@@ -52,3 +63,8 @@ finally:
 # query = "DROP TABLE cars"
 # db.execute(query)
 # connection.commit()
+    
+# ------------Get the data from the database
+# query = "SELECT * FROM cars"
+# db.execute(query)
+# print(db.fetchall())
