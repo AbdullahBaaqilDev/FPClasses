@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>Flask Tutorail</title>
+{% endblock %} 
+
+
+{% block body %}
+
+
+    {% if logged_in_user %}
+        <p>You are logged in as <b>{{ logged_in_user.username }}</b></p>
+        <a href = "{{ url_for('log_out') }}"> <button style = "width: 150px; height: 50px;">Log Out</button> </a>
+    {% else %}
+        <p>This web page was made by <b>ABDULLAH</b></p>
+        <a href = "{{ url_for('sign_up') }}"> <button style = "width: 150px; height: 50px;">Sign Up</button> </a>
+        <br><br>
+        <a href = "{{ url_for('log_in') }}"> <button style = "width: 150px; height: 50px;">Log In</button> </a>
+    {% endif %}
+
+    <hr>
+
+    <table border="2">
+        <tr>
+            <th style = "width: 20px;">ID</th>
+            <th style = "width: 200px;">Username</th>
+            <th style = "width: 100px;">Actions</th>
+        </tr>
+
+        {% for user in users %}
+            <tr>
+                <td style = "text-align: center;">{{ user.id }}</td> 
+                <td style = "text-align: center;">{{ user.username }}</td> 
+                <td style = "text-align: center;">
+                    {% if logged_in_user.id == user.id %}
+                        <a href = "{{ url_for('update', id =  user.id ) }}">update</a>
+                        <br>
+                        <a href = "{{ url_for('delete', id =  user.id ) }}">delete</a>
+                    {% else %}
+                        <p>Not Logged In</p>
+                    {% endif %}
+                </td> 
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

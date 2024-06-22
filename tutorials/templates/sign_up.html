@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>Sign Up</title>
+{% endblock %} 
+
+
+{% block body %}
+<div style = "width: 300px;">
+    <form action = "/sign-up" method = "POST">
+        <div style = "display: flex; flex-direction: column; margin-bottom: 10px;">
+            <label for = "username_box">Name:</label>
+            {% if password_password_again or username_exist %}
+            <input type = "text" value = "{{username}}" name = "username_box"/>
+            {% else %}
+            <input type = "text" name = "username_box"/>
+            {% endif %}
+        </div>
+
+        <div style = "display: flex; flex-direction: column; margin-bottom: 10px;">
+            <label for = "password_box">Password:</label>
+            {% if password_password_again or username_exist %}
+            <input type = "text" value = "{{password}}" name = "password_box"/>
+            {% else %}
+            <input type = "text" name = "password_box"/>
+            {% endif %}
+        </div>
+
+        <div style = "display: flex; flex-direction: column; margin-bottom: 10px;">
+            <label for = "password_again_box">Password Again:</label>
+            {% if password_password_again or username_exist %}
+            <input type = "text" value = "{{password_again}}" name = "password_again_box"/>
+            {% else %}
+            <input type = "text" name = "password_again_box"/>
+            {% endif %}
+        </div>
+
+        <input type = "submit" value = "Submit"/>
+        <a href = "{{ url_for('index') }}"><input type = "button" value = "Cancel"/></a>
+
+        {% if password_password_again %}
+        <p style="color:red;">The password was not repeated accurately</p>
+        {% endif %}
+        {% if username_exist %}
+        <p style="color:red;">The username is already used</p>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
+

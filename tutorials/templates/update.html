@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title> Update Your Username/Password</title>
+{% endblock %}
+
+
+{% block body %}
+
+<div style = "width: 300px;">
+    <form action = "/update/{{user.id}}" method = "POST">
+        <div style = "display: flex; flex-direction: column; margin-bottom: 10px;">
+            <label for = "updated_username_box">Username:</label>
+            <input type = "text" value = "{{ user.username }}" name = "updated_username_box"/>
+        </div>
+
+        <div style = "display: flex; flex-direction: column; margin-bottom: 10px;">
+            <label for = "updated_password_box">Password:</label>
+            <input type = "text" value = "{{ password_place_holder }}" name = "updated_password_box"/>
+        </div>
+
+        <div style = "display: flex; flex-direction: column; margin-bottom: 10px;">
+            <label for = "updated_password_again_box">Password Again:</label>
+            <input type = "text" value = "{{ password_place_holder }}" name = "updated_password_again_box"/>
+        </div>
+
+        <input type = "submit" value = "Submit"/>
+        <a href="{{ url_for('index') }}"> <input type = button value = "Cancel"/> </a>
+    </form>
+</div>
+{% endblock %}

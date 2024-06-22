@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>Log In</title>
+    <script >
+        function validatelogin(){
+            var u,p, r;
+            r=true;
+            p= document.getElementsByName("password_box")[0].value;
+            u= document.getElementsByName("username_box")[0].value;
+            if (p=="" || u ==""){
+                alert("User name or Password can not be empty");
+                r = false;
+            }
+
+            return r;
+        }
+    </script>
+{% endblock %} 
+
+
+{% block body %}
+<div style = "width: 300px;">
+    <form action = "/log-in" method = "POST">
+        <div style = "display: flex; flex-direction: column; margin-bottom: 10px;">
+            <label for = "username_box">Name:</label>
+            {% if wrong_username_password %}
+            <input type = "text" value = "{{username}}" name = "username_box"/>
+            {% else %}
+            <input type = "text" name = "username_box"/>
+            {% endif %}
+        </div>
+
+        <div style = "display: flex; flex-direction: column; margin-bottom: 10px;">
+            <label for = "password_box">Password:</label>
+            {% if wrong_username_password %}
+            <input type = "text" value = "{{password}}" name = "password_box"/>
+            {% else %}
+            <input type = "text" name = "password_box"/>
+            {% endif %}
+        </div>
+
+        <input type = "submit" value = "Log In" onclick="return validatelogin()"/>
+        <a href = "{{ url_for('index') }}"><input type = "button" value = "Cancel" /></a>
+        
+        {% if wrong_username_password %}
+        <p style="color:red;">The username or the password provided is INCORRECT</p>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
+

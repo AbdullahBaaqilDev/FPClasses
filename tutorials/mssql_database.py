@@ -15,10 +15,8 @@ try:
     connection = pypyodbc.connect(connection_string, autocommit=True)
     db = connection.cursor()
 
-    query = "SELECT * FROM cars WHERE color = ?"
-    values = ("red",)
-    db.execute(query, values)
-    print(db.fetchall())
+    # query = "CREATE TABLE cars (name VARCHAR(50) PRIMARY KEY, color VARCHAR(15), price DECIMAL(10, 2))"
+    # db.execute(query)
 except Exception as error:
     print("Couldn't connect to database")
     print(error)
@@ -27,7 +25,7 @@ finally:
     connection.close()
 
 # -------------Create a Database
-# db.execute("CREATE DATABASE test2")
+# db.execute("CREATE DATABASE test1")
 
 # -------------Create a Table
     # query = "CREATE TABLE cars (name VARCHAR(50) PRIMARY KEY, color VARCHAR(15), price DECIMAL(10, 2))"
